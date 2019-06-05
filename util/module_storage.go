@@ -69,5 +69,8 @@ func DownloadAndParseModule(fs afero.Fs, mod string) (*config.Config, error) {
 	if e != nil {
 		return nil, errs.WrapUser(e, "unable to download module")
 	}
+	// TODO(mbarrien): This may need updating for HCL vs HCL2.
+        // We get away with the #hcl2:terraform annotation for now, but that
+        // isn't scalable
 	return config.LoadDir(d)
 }
